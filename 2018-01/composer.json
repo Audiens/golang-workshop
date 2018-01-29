@@ -1,0 +1,17 @@
+{
+  "name": "audiens/2018-01",
+  "description": "2018 01 workshop",
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "tests\\": "tests/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
