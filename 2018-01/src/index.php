@@ -8,5 +8,6 @@ $runner = new \runner\Runner();
 echo $runner->run('+',1,1,2);
 echo $runner->run('*',7,5,2);
 echo $runner->run('?',65,92,41);
+echo $runner->run('abramo lincoln',65,92,41);
 
 
