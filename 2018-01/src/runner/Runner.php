@@ -2,24 +2,24 @@
 
 namespace runner;
 
+use command\AddCommand;
+use command\Agent;
+use command\MathObject;
+
 class Runner
 {
-    public function run($what, $argument1, $argument2, $argument3)
+    public function run($operator, $argument1, $argument2, $argument3)
     {
+        $mathObject = new MathObject($argument1, $argument2, $argument3);
+        $smith = new Agent();
 
-        switch ($what) {
+        switch ($operator) {
             case '+':
-                $result = $argument1 + $argument2 + $argument3;
-                break;
-            case '*':
-                $result = $argument1 * $argument2 * $argument3;
+                $addCommand = new AddCommand($mathObject);
+                $smith->placeCommand($addCommand);
                 break;
             default:
-                $result = 0;
                 break;
         }
-
-        return $result;
-
     }
 }
