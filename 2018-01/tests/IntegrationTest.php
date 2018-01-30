@@ -14,7 +14,7 @@ class IntegrationTest extends \PHPUnit\Framework\TestCase
         $string = ob_get_contents();
         ob_end_clean();
 
-        self::assertEquals(4700, $string);
+        self::assertEquals("470659241", $string);
 
 
     }

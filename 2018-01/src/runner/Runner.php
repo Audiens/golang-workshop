@@ -2,24 +2,27 @@
 
 namespace runner;
 
+use Data\DataObject;
+use handler\HandlerConcat;
+use handler\HandlerMoltiplic;
+use handler\HandlerPlus;
+
 class Runner
 {
     public function run($what, $argument1, $argument2, $argument3)
     {
 
-        switch ($what) {
-            case '+':
-                $result = $argument1 + $argument2 + $argument3;
-                break;
-            case '*':
-                $result = $argument1 * $argument2 * $argument3;
-                break;
-            default:
-                $result = 0;
-                break;
-        }
+        $dataObject = new DataObject();
 
-        return $result;
+        $dataObject->setOperator($what);
+
+        $dataObject->setP1($argument1);
+        $dataObject->setP2($argument2);
+        $dataObject->setP3($argument3);
+
+        $chain = new HandlerConcat(new HandlerPlus(new HandlerMoltiplic()));
+
+        return $chain->handle($dataObject);
 
     }
 }
