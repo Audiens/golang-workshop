@@ -12,9 +12,10 @@ class IntegrationTest extends \PHPUnit\Framework\TestCase
         ob_start();
         require_once __DIR__.'/../src/index.php';
         $string = ob_get_contents();
+
         ob_end_clean();
 
-        self::assertEquals(4700, $string);
+        self::assertEquals("?4@700", $string);
 
 
     }
