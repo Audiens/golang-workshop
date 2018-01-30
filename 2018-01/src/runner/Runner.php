@@ -2,24 +2,42 @@
 
 namespace runner;
 
+use memento\Originator;
+
 class Runner
 {
-    public function run($what, $argument1, $argument2, $argument3)
+    private $originator;
+    private $memento;
+
+    public function __construct()
     {
+        $this->originator = new Originator();
+    }
 
-        switch ($what) {
+    /**
+     * @param string $op
+     * @param int[] ...$arguments
+     *
+     * @return int
+     */
+    public function run(string $op, ...$arguments): int
+    {
+        switch ($op) {
             case '+':
-                $result = $argument1 + $argument2 + $argument3;
-                break;
-            case '*':
-                $result = $argument1 * $argument2 * $argument3;
-                break;
+                return $this->originator->sum($arguments);
+            case '+s':
+                $this->memento = $this->originator->createMemento();
+                $result = $this->originator->sum($arguments);
+
+                return $result;
+            case '+r':
+                if ($this->memento !== null) {
+                    $this->originator->restoreMemento($this->memento);
+                }
+
+                return $this->originator->sum($arguments);
             default:
-                $result = 0;
-                break;
+                return 0;
         }
-
-        return $result;
-
     }
 }
