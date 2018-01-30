@@ -2,24 +2,20 @@
 
 namespace runner;
 
-class Runner
+use factory\RunnerFactory;
+use factory\RunnerInterface;
+
+class Runner implements RunnerInterface
 {
+    private $runnerFactory;
+
+    function __construct()
+    {
+        $this->runnerFactory = new RunnerFactory();
+    }
+
     public function run($what, $argument1, $argument2, $argument3)
     {
-
-        switch ($what) {
-            case '+':
-                $result = $argument1 + $argument2 + $argument3;
-                break;
-            case '*':
-                $result = $argument1 * $argument2 * $argument3;
-                break;
-            default:
-                $result = 0;
-                break;
-        }
-
-        return $result;
-
+        return $this->runnerFactory->makeRunner($what)->run($what, $argument1, $argument2, $argument3);
     }
 }

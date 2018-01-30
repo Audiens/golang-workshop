@@ -2,11 +2,14 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$runner = new \runner\Runner();
+$runnerFactory = new \factory\RunnerFactory();
+
+$runner = $runnerFactory->makeRunner('@');
+
+for($i = 0;$i < 10;$i++){
+   echo $runner->run('+',1,1,2);
+}
 
 
-echo $runner->run('+',1,1,2);
-echo $runner->run('*',7,5,2);
-echo $runner->run('?',65,92,41);
 
 
