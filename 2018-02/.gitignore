@@ -1,0 +1,18 @@
+# ENV file (see template to make yours)
+/.env
+
+# Ninja (build) generated files
+/.ninja_deps
+/.ninja_log
+
+/bin/*
+/out/*
+/pkg/*
+
+# External sources
+/src/*.*
+!/src/*.go
+
+# Coverage files
+/coverage.txt
+/coverage.*.txt

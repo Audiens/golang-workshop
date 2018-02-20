@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+get_path()
+{
+  echo `echo $1 | sed -re "s/[^\/]+\.go$//"`;
+}
+
+get_module()
+{
+  echo `echo $1 | sed -re "s/src\///"`;
+}

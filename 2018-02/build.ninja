@@ -1,0 +1,9 @@
+rule gobuild
+  command = . ./.ninja-helpers && go get -v -t ./`get_path $in`/... && go build -o $out `get_module $in`
+  description = GOBUILD $out
+
+build out/testing: gobuild src/testing
+build out/intfs: gobuild src/intfs
+build out/json: gobuild src/jsonmanagement
+build out/goroutine: gobuild src/goroutine
+build out/pointers: gobuild src/pointers

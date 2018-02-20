@@ -1,0 +1,42 @@
+[
+  {
+    "op": "sum",
+    "arg1": 1,
+    "arg2": 1
+  },
+  {
+    "op": "subtraction",
+    "arg1": 0.5,
+    "arg2": 1
+  },
+  {
+    "op": "multiply",
+    "arg1": 987,
+    "arg2": 789
+  },
+  {
+    "op": "division",
+    "arg1": 72,
+    "arg2": 9
+  },
+  {
+    "op": "sum",
+    "arg1": 5,
+    "arg2": 28
+  },
+  {
+    "op": "subtraction",
+    "arg1": 88,
+    "arg2": 127
+  },
+  {
+    "op": "multiply",
+    "arg1": 7,
+    "arg2": 7
+  },
+  {
+    "op": "division",
+    "arg1": 48,
+    "arg2": 4
+  }
+]
