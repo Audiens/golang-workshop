@@ -13,4 +13,9 @@ $ ./genenv.sh
 $ atom .
 ```
 
-(in editor) ALT+D to load the env variables BEFORE opening any go file (in case close it, reload window and press ALT+D before)
+Build
+===
+
+`./build.sh`
+
+Output files are in the ./out directory

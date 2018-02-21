@@ -20,5 +20,5 @@ RUN groupadd -g $GID -o -r build \
 
 VOLUME /build
 WORKDIR /build
-ENTRYPOINT ["/build/entrypoint.sh"]
+ENTRYPOINT ["/build/docker/entrypoint.sh"]
 USER build
