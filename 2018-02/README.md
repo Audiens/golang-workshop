@@ -3,6 +3,7 @@ Requisites
 
 - Docker
 - Atom
+- Golang compiler
 
 Setup
 ===
