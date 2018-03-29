@@ -1,0 +1,14 @@
+
+iterazione 2
+sviluppo componente form per inserimento dei dati: capitale, tasso, durata
+
+test jest componente
+con testutils di react
+https://reactjs.org/docs/test-utils.html
+oppure enzyme
+http://airbnb.io/enzyme/
+
+test con simulate (tesutils di react o enzyme)
+
+
+

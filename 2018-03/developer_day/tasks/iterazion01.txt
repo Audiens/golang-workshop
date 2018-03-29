@@ -1,0 +1,12 @@
+iterazione 1
+
+sviluppo componente react di tipo table con risultati della funzione ammortamento
+
+test jest snapshot
+https://facebook.github.io/jest/docs/en/snapshot-testing.html
+
+test jest componente
+con testutils di react
+https://reactjs.org/docs/test-utils.html
+oppure enzime
+http://airbnb.io/enzyme/

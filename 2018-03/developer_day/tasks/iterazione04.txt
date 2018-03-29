@@ -1,0 +1,4 @@
+iterazione 4
+
+refactoring dei componenti e del javascript
+se ritieni nececessario aggiungi/modifica i test e valuta quanto ti sono di aiuto o ti rallentano

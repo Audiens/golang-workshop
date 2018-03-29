@@ -1,0 +1,12 @@
+iterazione 3
+
+sviluppo componenti react con amchart react
+
+test jest componente
+con testutils di react
+https://reactjs.org/docs/test-utils.html
+oppure enzyme
+http://airbnb.io/enzyme/
+
+test con testcafe
+
