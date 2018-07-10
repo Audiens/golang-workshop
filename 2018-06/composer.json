@@ -1,0 +1,23 @@
+{
+  "name": "audiens/2018-01",
+  "description": "2018 01 workshop",
+  "require": {
+    "predis/predis": "^1.1",
+    "react/event-loop": "*",
+    "react/http": "*",
+    "clue/multicast-react": "*",
+    "ramsey/uuid": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jack\\": "src/",
+      "tests\\": "tests/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
