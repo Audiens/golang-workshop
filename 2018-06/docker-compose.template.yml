@@ -5,6 +5,6 @@ services:
       context: .
       args:
         UID: {{uid}}
-    network_mode: 'host'
+    # network_mode: 'host'
     volumes:
       - ./src:/opt/src
