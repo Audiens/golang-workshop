@@ -11,6 +11,7 @@ services:
       - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
     volumes:
       - ./server:/server
+      - ./client:/client
     command: yarn run dev
   client:
     build: ./client

@@ -8,7 +8,8 @@ ENV PATH=$PATH:/node_modules/.bin
 RUN yarn
 
 WORKDIR /server
-ADD . /server
+ADD /server /server
+ADD /client /client
 
 EXPOSE 8080
 
