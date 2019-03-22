@@ -1,21 +1,21 @@
 const validateConfiguration = {
     'first_name': [
-        {minLenght: 3},
-        {noNumbers: true},
-        {noSpecialChars: true},
+        { minLenght: 3 },
+        { noNumbers: true },
+        { noSpecialChars: true },
     ],
     'last_name':[
-        {minLenght: 3},
-        {noNumbers: true},
-        {noSpecialChars: true},
+        { minLenght: 3 },
+        { noNumbers: true },
+        { noSpecialChars: true },
     ],
     'fiscal_code':[
-        {minLenght: 16},
-        {maxLenght: 16},
-        {noSpecialChars: true},
+        { minLenght: 16 },
+        { maxLenght: 16 },
+        { noSpecialChars: true },
     ],
     'birth_date': [
-        {isDate: true},
+        { isDate: true },
     ]
 }
 

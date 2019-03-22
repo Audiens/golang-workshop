@@ -1,11 +1,11 @@
-import {validateConfiguration, validationMessages} from './config'
+import { validateConfiguration, validationMessages } from './config'
 
 const inputIsValid = (inputName,inputValue) => {
-    const inputValidateConfiguration = validateConfiguration[inputName];
+    const inputValidateConfiguration = validateConfiguration[ inputName ];
     let inputIsValid = true
     let inputErrorMessage = ''
     inputValidateConfiguration.map((inputValidation) => {
-        Object.entries(inputValidation).forEach(([validationKey, validationValue]) => {
+        Object.entries(inputValidation).forEach(([ validationKey, validationValue ]) => {
             let inputConditionIsValid
             switch(validationKey){
                 case 'minLenght':
@@ -28,13 +28,13 @@ const inputIsValid = (inputName,inputValue) => {
             }
             if(!inputConditionIsValid){
                 inputIsValid = false
-                inputErrorMessage = validationMessages[validationKey]
+                inputErrorMessage = validationMessages[ validationKey ]
             }
             
         })
         return true
     })
-    return {inputIsValid, inputErrorMessage}
+    return { inputIsValid, inputErrorMessage }
 }
 
 export default inputIsValid
