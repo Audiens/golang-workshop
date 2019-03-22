@@ -23,6 +23,9 @@ const inputIsValid = (inputName,inputValue) => {
                 case 'isDate':
                     inputConditionIsValid = (inputValue instanceof Date && !isNaN(inputValue.valueOf()))
                     break
+                case 'email':
+                    inputConditionIsValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputValue)
+                    break
                 default:
                     inputConditionIsValid = true
             }
@@ -30,7 +33,7 @@ const inputIsValid = (inputName,inputValue) => {
                 inputIsValid = false
                 inputErrorMessage = validationMessages[ validationKey ]
             }
-            
+
         })
         return true
     })

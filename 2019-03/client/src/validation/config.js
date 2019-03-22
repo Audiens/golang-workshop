@@ -9,6 +9,10 @@ const validateConfiguration = {
         { noNumbers: true },
         { noSpecialChars: true },
     ],
+    'email':[
+        { minLenght: 3 },
+        { email: true}
+    ],
     'fiscal_code':[
         { minLenght: 16 },
         { maxLenght: 16 },
@@ -25,6 +29,7 @@ const validationMessages = {
     'noNumbers':'Non inserire numeri',
     'noSpecialChars': 'Non inserire caratteri speciali',
     'isDate': 'Inserisci una data valida',
+    'email': 'Inserisci una email valida',
 }
 
 export { validateConfiguration, validationMessages }
