@@ -10,10 +10,17 @@
     "express": "^4.16.4"
   },
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon src/server.js --exec babel-node --presets babel-preset-env",
     "test": "jest /test --notify"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
     "jest": "^24.3.1",
     "nodemon": "^1.18.10"
   }

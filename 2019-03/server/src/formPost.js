@@ -1,7 +1,7 @@
-const fs = require('fs')
-const jsonToCsv = require('./jsonToCsvLine')
+import fs from 'fs'
+import jsonToCsv from './jsonToCsvLine'
 
-module.exports = (req, res) => {
+export default (req, res) => {
     const first_name = req.body['first_name']
     const last_name = req.body['last_name']
     const fiscal_code = req.body['fiscal_code']

@@ -1,4 +1,4 @@
-const jsonToCsvLine = require('../src/jsonToCsvLine')
+import jsonToCsvLine from '../src/jsonToCsvLine'
 
 describe('jsonToCsv ', function() {
     it('should accept json and return a valid csv line', function() {
