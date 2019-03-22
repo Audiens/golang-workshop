@@ -24,7 +24,7 @@ const inputIsValid = (inputName,inputValue) => {
                     inputConditionIsValid = (inputValue instanceof Date && !isNaN(inputValue.valueOf()))
                     break
                 case 'email':
-                    inputConditionIsValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputValue)
+                    inputConditionIsValid = /^\w+(.]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputValue)
                     break
                 default:
                     inputConditionIsValid = true
