@@ -1,10 +1,8 @@
-'use strict';
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const formPostAction = require('./formPost')
-const wsCsvJson = require('./wsCsvJson')
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import formPostAction from './formPost'
+import wsCsvJson from './wsCsvJson'
 
 var corsOptions = {
     origin: 'http://example.com',
