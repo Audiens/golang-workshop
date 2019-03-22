@@ -5,7 +5,21 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 const Input = (props) => {
     const { onChange, onChangeDate, inputValue,  inputLabel, inputId, inputName, inputType, inputPlaceholder, isValid, isTouched, errorMessage } = props
-    let input = <input type={ inputType } name={ inputName } id={ inputId } value={ inputValue } placeholder={ inputPlaceholder } onBlur={ onChange } onChange={ onChange } />
+
+    const fieldsetClass = !isValid && isTouched ? 'error' : null
+    const errorMessageElement = !isValid && isTouched ? <span> {errorMessage}</span> : null
+
+    let input = <input
+      className={errorMessageElement ? 'withError' : ''}
+      type={ inputType }
+      name={ inputName }
+      id={ inputId }
+      value={ inputValue }
+      placeholder={ inputPlaceholder }
+      onBlur={ onChange }
+      onChange={ onChange } />
+
+
     if(inputType === 'date'){
         const today = new Date()
         input = <DatePicker
@@ -21,8 +35,7 @@ const Input = (props) => {
                 />
     }
 
-    const fieldsetClass = !isValid && isTouched ? 'error' : null
-    const errorMessageElement = !isValid && isTouched ? <span>{errorMessage}</span> : null
+
     return (
         <fieldset className={ fieldsetClass }>
             <label htmlFor={ inputId }>{inputLabel}</label>

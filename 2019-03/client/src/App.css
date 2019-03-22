@@ -1,4 +1,4 @@
-
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 form,fieldset,input,h1{
   margin: 0;
   padding: 0;
@@ -80,6 +80,20 @@ form input[type=submit]{
   #container{width: calc(80% - 30px);}
 }
 
+fieldset.error {
+  display:inline-block;
+  position: relative
+
+}
+fieldset.error:after {
+  font-family: sans-serif;
+  content: '!';
+  color: red;
+  font-weight: bolder;
+  position: absolute;
+  right: 6px;
+  margin-top: -40px;
+}
 #footer {
   text-align: right;
   font-size:10px;
