@@ -109,6 +109,7 @@ class App extends Component {
       formData={ this.state.formData }
       formFields={ this.state.formFields }
      />
+
     </React.Fragment>
 
      if(this.state.formStatus.isSent && this.state.formStatus.isValid){
@@ -120,7 +121,20 @@ class App extends Component {
      }
 
      if(this.state.formStatus.isSending){
-      output = <div className="message info">Invio in corso...</div>
+      output =      ( <div className="sk-circle">
+        <div className="sk-circle1 sk-child"></div>
+        <div className="sk-circle2 sk-child"></div>
+        <div className="sk-circle3 sk-child"></div>
+        <div className="sk-circle4 sk-child"></div>
+        <div className="sk-circle5 sk-child"></div>
+        <div className="sk-circle6 sk-child"></div>
+        <div className="sk-circle7 sk-child"></div>
+        <div className="sk-circle8 sk-child"></div>
+        <div className="sk-circle9 sk-child"></div>
+        <div className="sk-circle10 sk-child"></div>
+        <div className="sk-circle11 sk-child"></div>
+        <div className="sk-circle12 sk-child"></div>
+      </div>)
      }
     
     return (
