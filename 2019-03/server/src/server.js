@@ -1,8 +1,10 @@
 'use strict';
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import formPostAction from './formPost'
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const formPostAction = require('./formPost')
+const wsCsvJson = require('./wsCsvJson')
 
 var corsOptions = {
     origin: 'http://example.com',
@@ -20,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors())
 app.post('/', formPostAction);
+app.get('/c2j', wsCsvJson);
 
 
 app.listen(PORT, HOST);
