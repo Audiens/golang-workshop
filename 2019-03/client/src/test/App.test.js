@@ -18,17 +18,17 @@ it('App state should be like defaultState', () => {
 it('App should render the correct number of elements', () => {
     const div = document.createElement('div');
     const app = ReactDOM.render(<App />, div);
-    expect(div.querySelectorAll('input[type=text]').length).toEqual(4);
+    expect(div.querySelectorAll('input[type=text]').length).toEqual(5);
     expect(div.querySelectorAll('form').length).toEqual(1);
-    expect(div.querySelectorAll('label').length).toEqual(4);
+    expect(div.querySelectorAll('label').length).toEqual(5);
     expect(div.querySelectorAll('h1').length).toEqual(1);
     expect(div.querySelectorAll('input[type=submit]').length).toEqual(1);
-    expect(div.querySelectorAll('fieldset').length).toEqual(4);
+    expect(div.querySelectorAll('fieldset').length).toEqual(5);
   });
 
   it('Form submit should call the right function', () => {
     const onSubmitFn = jest.fn();
-    const wrapper = mount(<Form 
+    const wrapper = mount(<Form
         onSubmit={onSubmitFn}
         formFields={{}}
         onChange={jest.fn()}
@@ -42,7 +42,7 @@ it('App should render the correct number of elements', () => {
 
   it('Input change should call the right function', () => {
     const onChangeFn = jest.fn();
-    const wrapper = mount(<Input 
+    const wrapper = mount(<Input
         inputName={''}
         inputId={''}
         isValid={false}
