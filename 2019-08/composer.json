@@ -1,0 +1,19 @@
+{
+  "name": "audiens/2019-08",
+  "license": "MIT",
+  "description": "2019 08 workshop",
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "Tests\\": "tests/php/",
+      "Runner\\": "src/php/runner"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
