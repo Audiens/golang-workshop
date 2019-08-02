@@ -7,19 +7,11 @@ class Runner
     public function run($what, $argument1, $argument2, $argument3)
     {
 
-        switch ($what) {
-            case '+':
-                $result = $argument1 + $argument2 + $argument3;
-                break;
-            case '*':
-                $result = $argument1 * $argument2 * $argument3;
-                break;
-            default:
-                $result = 0;
-                break;
-        }
+        $factory = new AritFactory();
 
-        return $result;
+        $opClass = $factory->getArith($what);
+
+        return $opClass->calc($argument1,$argument2,$argument3);
 
     }
 }
