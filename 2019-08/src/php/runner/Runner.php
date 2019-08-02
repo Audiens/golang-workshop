@@ -4,22 +4,30 @@ namespace Runner;
 
 class Runner
 {
-    public function run($what, $argument1, $argument2, $argument3)
+    public function run($operation, $argument1, $argument2, $argument3):int
     {
 
-        switch ($what) {
+        $classToUse = new Defaultiamo();
+
+        switch ($operation){
             case '+':
-                $result = $argument1 + $argument2 + $argument3;
+                $classToUse = new Sum();
                 break;
             case '*':
-                $result = $argument1 * $argument2 * $argument3;
+                $classToUse = new MoltCarmeloMolt();
+                break;
+            case '-':
+                $classToUse = new Sottr();
+                break;
+            case '/':
+                $classToUse = new Div();
                 break;
             default:
-                $result = 0;
                 break;
         }
 
-        return $result;
+        $strategy = new StrategyFare($classToUse);
 
+        return $strategy->faiOperazione($argument1, $argument2, $argument3);
     }
 }
