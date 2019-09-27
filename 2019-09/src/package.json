@@ -1,0 +1,17 @@
+{
+  "name": "fp_workshop",
+  "version": "1.0.0",
+  "description": "Javascript Functional Programming Workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "nide",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.18"
+  }
+}
