@@ -39,6 +39,9 @@ function hasBoughtHealthyFood(items) {
     return items.every(item => item.type !== 'alcohol')
 }
 
+function getDiscount(value, percentage) {
+    return value * (percentage / 100)
+}
 ```
 
 Questa soluzione funziona, ma è poco performante perchè ha un tempo computazionale di O(n^2): `hasBoughtOnlyAlcohol`,
