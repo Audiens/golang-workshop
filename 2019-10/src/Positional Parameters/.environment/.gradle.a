@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "$@">output.txt
+echo "Appended line">>output.txt
+first=$(echo $1 | tr '[A-Z]'  '[a-z]')
+second=$(echo $2 | tr '[a-z]'  '[A-Z]')
+echo "$first$second" >>output.txt
+
+cat output.txt

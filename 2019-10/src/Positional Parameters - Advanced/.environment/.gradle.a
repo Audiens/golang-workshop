@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "$*"
+dir_name="created_files"
+
+mkdir $dir_name
+for i in "$@"; do
+        touch "$dir_name/$i"
+        echo "$i"
+done
