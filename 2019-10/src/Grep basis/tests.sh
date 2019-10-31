@@ -51,3 +51,4 @@ for file_name in ${file_names[@]}; do
 		echo "Ops, $file_name does not exists :( - Failed"
 	fi
 done
+
