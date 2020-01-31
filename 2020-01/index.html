@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Game of Life</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
         /* BODY */
@@ -98,6 +99,20 @@
             padding: 16px
         }
 
+        #grid td.alive {
+            background-color: #FFF;
+        }
+
+        .hashtag {
+            color: aquamarine;
+            font-size: 40px
+
+        }
+
+
+        button {
+            padding: 16px
+        }
     </style>
 </head>
 <body>
@@ -139,7 +154,16 @@
 </table>
 
 
+<h3 class="hashtag">#gameoflife</h3>
+<h3 class="hashtag">#muchgrano</h3>
 
+<button id="next">START</button>
+<button id="stop">STOP</button>
+
+<br />
+<br/>
+
+<a href="https://it.reactjs.org/" target="_blank" style="color: #00FF00">Developped in React</a>
 
 </body>
 
@@ -149,21 +173,69 @@
     const dimension = {x: 16, y: 16}
     const grid = document.getElementById('grid')
     const rows = []
+    let prevResponse = null
 
-    for(let i = 0; i < dimension.x; i++){
-       let row = '<tr>'
 
-        for(let z = 0; z< dimension.y; z++) {
-            row += '<td>' + '' + '</td>'
+    function createGrid({d, v}) {
+
+        for(let i = 0; i < d.x; i++){
+            let row = '<tr>'
+
+            for(let z = 0; z< d.y; z++) {
+                row += '<td class="' + (v.length && v[i][z] ? 'alive' : '') + '"></td>'
+            }
+
+            row += '</tr>'
+            rows[i]  = row
+
         }
 
-        row += '</tr>'
-        rows[i]  = row
-
+        grid.innerHTML = rows.join('')
     }
 
-    grid.innerHTML = rows.join('')
+
+    function getData() {
+        fetch('http://localhost:8080',  {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            body:  JSON.stringify(prevResponse),
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            })
+        })
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(res){
+                console.log(res)
+                prevResponse = res
+                createGrid(res)
+            })
+            .catch(function(error){
+                console.log(error)
 
 
+            })
+    }
+
+    let int = null
+    createGrid({d: {x: 16, y: 16}, v: []})
+    document.getElementById('next').addEventListener('click', function() {
+        int = setInterval(function(){
+            getData()
+        }, 500)
+
+    })
+
+    document.getElementById('stop').addEventListener('click', function() {
+        if(int){
+            clearInterval(int)
+        }
+
+
+    })
+// #gameoflige #muchgrano
+    // button api
 </script>
 </html>

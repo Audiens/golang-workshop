@@ -115,6 +115,6 @@ class index
     }
 
 }
-header('Content-Type: application/json');
+
 $g = new index();
 echo $g->tj($_POST['v']);
