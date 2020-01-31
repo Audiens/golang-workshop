@@ -323,6 +323,7 @@ class IndexTest extends \PHPUnit\Framework\TestCase
                         ],
                 ],
         ];
+        
 
         $response = $client->request(
             'POST',
