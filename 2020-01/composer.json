@@ -1,0 +1,25 @@
+{
+  "name": "audiens/code-quality-workshop",
+  "autoload": {
+    "psr-4": {
+      "": "src/",
+      "tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "squizlabs/php_codesniffer": "*"
+  },
+  "scripts": {
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "extra": {
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

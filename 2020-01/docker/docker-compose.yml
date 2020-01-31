@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  webserver:
+    build:
+      context: ./
+    container_name: '7.1.x-webserver'
+    restart: 'always'
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../src:/var/www/html
