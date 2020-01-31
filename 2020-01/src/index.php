@@ -1,14 +1,29 @@
 <?php
 
+ini_set('request_order', 'GC');
+ini_set('register_globals', 'true');
+error_reporting(E_ALL);
+
+$rest_json = file_get_contents("php://input");
+$_POST = json_decode($rest_json, true);
+
 class index
 {
     private static $n = [];
 
-    public function tj()
+    public function tj($receivedValue = null)
     {
+        if(is_array($receivedValue))
+        {
+            self::$n = $receivedValue;
+        }
+
+        $isRandom = false;
+
         if(count(self::$n) == 0)
         {
             self::$n = $this->tjInit();
+            $isRandom=true;
         }
 
         self::$n = $this->tjNext();
@@ -18,7 +33,8 @@ class index
                 'x' => 16,
                 'y' => 16
             ],
-            'v' => self::$n
+            'v' => self::$n,
+            'random' => $isRandom
         ];
 
         return \json_encode($data);
@@ -87,4 +103,4 @@ class index
 }
 header('Content-Type: application/json');
 $g = new index();
-echo $g->tj();
+echo $g->tj($_POST['v']);
