@@ -2,22 +2,26 @@
 
 class index
 {
-
-    public function printRules()
+    public function tj()
     {
-        $str = <<<EOF
-              Regole gioco straordinario:\n\n
-              1) Qualsiasi cella viva con meno di due celle vive adiacenti muore, come per effetto d'isolamento;
-              2) Qualsiasi cella viva con due o tre celle vive adiacenti sopravvive alla generazione successiva;
-              3) Qualsiasi cella viva con più di tre celle vive adiacenti muore, come per effetto di sovrappopolazione;
-              4) Qualsiasi cella morta con esattamente tre celle vive adiacenti diventa una cella viva, come per effetto di riproduzione\n\n
-              
-              #GAMEOFLIFE\n\n
-              
-              EOF;
-        echo $str;
+        $n = [];
+
+        for($i=0;$i<16;$i++)
+        {
+            array_push($n, \random_int(0, 100));
+        }
+
+        $data = [
+            'd' => [
+                'x' => 16,
+                'y' => 16
+            ],
+            'v' => $n
+        ];
+
+        return \json_encode($data);
     }
 }
 
 $g = new index();
-$g->printRules();
+echo $g->tj();
