@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  apache:
+    build:
+      context: ./
+      dockerfile: webserver.Dockerfile
+      args:
+        - UID=$UID
+        - GID=$GID
+    ports:
+    - "80:8080"
+    volumes:
+      - "../../2020-08:/app"
+      - "../data:/var/www/html"
