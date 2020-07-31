@@ -14,7 +14,11 @@ case $1 in
   docker-compose -f ./docker/workshop.compose.yml logs -f $2
   ;;
 "connect")
-  docker exec -it docker_apache_1 sh
+ docker-compose -f ./docker/workshop.compose.yml exec apache bash
+  ;;
+"restart")
+  #docker-compose -f ./docker/workshop.compose.yml restart apache
+  docker-compose -f ./docker/workshop.compose.yml exec apache apachectl -k graceful
   ;;
 *)
   echo "Usage: ws start, stop, tail, connect"

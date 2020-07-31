@@ -13,3 +13,4 @@ services:
     volumes:
       - "../../2020-08:/app"
       - "../data:/var/www/html"
+      - "./vhost:/etc/apache2/sites-enabled"
