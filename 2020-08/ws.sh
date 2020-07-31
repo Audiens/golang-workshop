@@ -20,6 +20,10 @@ case $1 in
   #docker-compose -f ./docker/workshop.compose.yml restart apache
   docker-compose -f ./docker/workshop.compose.yml exec apache apachectl -k graceful
   ;;
+"test")
+  #docker-compose -f ./docker/workshop.compose.yml restart apache
+  docker-compose -f ./docker/workshop.compose.yml exec  apache  ./vendor/bin/paraunit run
+  ;;
 *)
   echo "Usage: ws start, stop, tail, connect"
   ;;
