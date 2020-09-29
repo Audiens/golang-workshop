@@ -60,3 +60,47 @@ spec:
     ports:
     - containerPort: 80
 ```
+
+## Step 3 
+Now we know that pod itself are quite useless so delete existing POD (find the command with Google :) )
+
+### Create deployment
+Create a new file called `deployment.yaml` and create a k8s deployment with ReplicaSet 3, the container use the image 
+`wardviaene/k8s-demo:latest` and expose the port 3000.
+
+### Expose the deployment 
+Until know the pod is up and running but, we don't know how it works. Expose the deployment in this way (after we see
+the correct method): 
+```shell script
+$ kubectl expose deployment helloworld-deployment --type=NodePort
+# get address exposed by minikube
+$ minikube service helloworld-deployment --url
+```
+
+### Update the image
+Using the command line update the deployment container with the image `wardviaene/k8s-demo:2` and see what happens.
+PS: use Google to find the command 
+
+### Solution
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: k8s-demo
+        image: wardviaene/k8s-demo
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
+```     
