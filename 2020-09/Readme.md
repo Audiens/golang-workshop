@@ -104,3 +104,25 @@ spec:
         - name: nodejs-port
           containerPort: 3000
 ```     
+
+## Step 4
+With the previous exercise kubectl select a random port to expose our application. Delete the existing service (Google 
+is your friend) and create a file `services.yaml` with a configuration that help us to reach the application to the port
+30000
+
+### Solution
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-service
+spec:
+  type: NodePort
+  selector:
+    app: helloworld
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000
+```
