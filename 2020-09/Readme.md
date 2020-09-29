@@ -126,3 +126,31 @@ spec:
       targetPort: 3000
       nodePort: 30000
 ```
+
+## Step 5 
+
+### Create a pod without a volume
+Create a mysql5.7 pod and apply it. Once the pod is up and running, run the command to login inside the Pod: 
+```shell script
+$ kubectl exec -it db-no-storage -- mysql -u root
+# once logged in: 
+$ create database pippo;
+$ use pippo; 
+$ create table paperino (name varchar(255));
+$ insert into paperino (name) values ("ciao");
+```
+After the creation of database, logout from the container (ctrl+D) and delete the POD.
+After pod deletion re-create the pod using the same yaml. login into the pod (the first command above) and run:   
+```shell script
+show databases; 
+```
+this command should return 0 results.
+
+### Create a pod with a local volume
+Mount a directory into minikube using this command: 
+```shell script
+$ minikube mount /tmp/data:/tmp/local-data
+```
+Modify the same yaml file in order to add a volume from the host. [Here](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+the documentation about local volume.
+Repeat the procedure above and, this time the show database command should return the database created before. 
