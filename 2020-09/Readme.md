@@ -147,13 +147,9 @@ show databases;
 this command should return 0 results.
 
 ### Create a pod with a local volume
-Mount a directory into minikube using this command: 
-```shell script
-$ minikube mount /tmp/data:/tmp/local-data
-```
-Modify the same yaml file in order to add a volume from the host. [Here](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
-the documentation about local volume.
-Repeat the procedure above and, this time the show database command should return the database created before. 
+Delete the deployment just created and modify the yaml adding the PersistentVolumeClaim information. Mount the pvc to
+the container and repeat the procedure above. This time when you delete the pod you should not lose your data.  
+Hint: mysql directory to mount is /var/lib/mysql
 
 ### Solution
 ```yaml
@@ -333,3 +329,5 @@ spec:
     app: helloworld-nginx
   type: NodePort
 ```
+
+## Step 7
