@@ -130,7 +130,7 @@ spec:
 ## Step 5 
 
 ### Create a pod without a volume
-Create a mysql5.7 pod and apply it. Once the pod is up and running, run the command to login inside the Pod: 
+Create a mysql5.7 deployment and apply it. Once the pod is up and running, run the command to login inside the Pod: 
 ```shell script
 $ kubectl exec -it db-no-storage -- mysql -u root
 # once logged in: 
@@ -154,3 +154,84 @@ $ minikube mount /tmp/data:/tmp/local-data
 Modify the same yaml file in order to add a volume from the host. [Here](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
 the documentation about local volume.
 Repeat the procedure above and, this time the show database command should return the database created before. 
+
+### Solution
+```yaml
+## Without storage
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: db-without-storage
+spec:
+  selector:
+    matchLabels:
+      app: db
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"    
+        ports:
+        - containerPort: 3306
+          name: mysql        
+---
+## With storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: db-with-storage
+  labels:
+    app: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+```
