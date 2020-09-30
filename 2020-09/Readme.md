@@ -331,3 +331,27 @@ spec:
 ```
 
 ## Step 7
+### Setup
+Delete all the deployment from the cluster (you know how) and enable the metric-server in minikube using this command: 
+```shell script
+$ minikube addons enable metrics-server
+``` 
+### Create deployment and service
+Create a new deployment with replicas = 1 that use the image `gcr.io/google_containers/hpa-example` and a service of type
+NodePort that expose the port 31001. The deployment container capacity is limited to 100 mCPU. Check on google how to limit
+container resources.
+
+### Create hpa
+Create an HorizontalPodAutoscaler with min capacity 1 and max capacity 10 linked to deployment created before.
+
+### Blast the cluster
+Run this command: 
+```shell script
+$ kubectl run -it load-generator --image=busybox /bin/sh
+```
+once logged in run: 
+```shell script
+$ while true; do wget -q -O- http://hpa-example.default.svc.cluster.local:31001; done;
+```
+
+and looks the pod numbers increase.
